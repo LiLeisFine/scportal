@@ -1,0 +1,42 @@
+html,body,.layui-container{
+    font-size: 16px;
+    height:100%;
+    margin:0;
+    padding:0;
+    width: 100%;
+}
+.layui-nav-tree{
+    width:100%;
+}
+.layui-nav{
+    background: #313e69;
+    min-height:400px; height:auto!important; height:400px;
+}
+.layui-nav-tree .layui-nav-item{
+    height: 5rem;
+    border-top: 1px solid #2d3649;
+}
+.layui-nav-tree .layui-nav-item a{
+    font-size: 1.125rem;
+    color: #8b939e;
+    height: 5rem;
+    line-height: 5rem;
+}
+.layui-nav-tree .layui-nav-item a:hover{
+    background: #313e69 url("../img/sl_mquery02.png") no-repeat;
+    color: white;
+}
+.pub_tl{
+    height: 5rem;
+    background: #ffffff;
+}
+.pub_tltitle{
+    color: #313e69;
+    font-size: 2rem;
+    line-height: 4.5rem;
+}
+.pub_tlist{
+    color: #313e69;
+    font-size: 1rem;
+    line-height: 4.5rem;
+}

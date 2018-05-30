@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link href="../static/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/index.css" rel="stylesheet" type="text/css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="index_bg">
+    <div class="pub_tl layui-container">
+        <div class="layui-row">
+            <div class="layui-col-sm2  layui-col-md2 pub_tltitle">
+                <div class="layui-row">
+                    <div class="layui-col-sm6  layui-col-md6 layui-col-md-offset6 layui-col-sm-offset6">
+                        聚合支付
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-sm4 layui-col-md4 layui-col-md-offset6 layui-col-sm-offset6 pub_tlist">
+                <div class="layui-row">
+                    <div class="layui-col-sm2  layui-col-md2">
+                        <img src="../static/img/tl_admin.png" >
+                    </div>
+                    <div class="layui-col-sm4  layui-col-md4">
+                        用户名
+                    </div>
+                    <div class="layui-col-sm2  layui-col-md2">
+                        <img src="../static/img/tl_set.png" >
+                    </div>
+                    <div class="layui-col-sm2  layui-col-md2">
+                        <img src="../static/img/tl_logout.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pub_body layui-container">
+        <div class="layui-row">
+            <div class="layui-col-sm2  layui-col-md2">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                    <li class="layui-nav-item"><a href=""><img src="../static/img/sl_mquery01.png" >商户查询</a></li>
+                    <li class="layui-nav-item"><a href="">交易查询</a></li>
+                    <li class="layui-nav-item"><a href="">代付查询</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/layui/layui.js"></script>
+<script>
+    layui.use('element', function(){
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
+</body>
+</html>

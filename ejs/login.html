@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    <link href="../static/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/login.css" rel="stylesheet" type="text/css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../static/images/favicon.ico">
+</head>
+<body>
+<div class="login_outbody">
+    <div class="login_inbody">
+        <div class="login_mdline">
+            <div class="layui-container login_mdl">
+                <div class="layui-row">
+                    <div class="layui-col-sm3 layui-col-md3 layui-col-md-offset4 layui-col-sm-offset4">
+                        <div class="login_mdll">代理商登录</div>
+                    </div>
+                    <div class="layui-col-sm5 layui-col-md5">
+                        <div class="login_lbox layui-card">
+                            <div class="layui-card-header" style="font-size: 1rem ;border-color: #cccccc">用户登录</div>
+                            <div class="layui-card-body layui-form">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><img src="../static/img/loginname.png" alt=""></label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="username " required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><img src="../static/img/loginsecret.png" alt=""></label>
+                                    <div class="layui-input-block">
+                                        <input type="password" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item" style="width: 9.8rem;display: inline-block">
+                                    <label class="layui-form-label"><img src="../static/img/logincode.png" alt=""></label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="title" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item login_codebox" id="login_codebox" ></div>
+                                <div class="layui-form-item" style="border: none">
+                                    <div class="layui-input-block" style="margin-left: 0">
+                                        <button class="layui-btn layui-btn-fluid login_btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/layui/layui.js"></script>
+<script type="text/javascript" src="../static/javascript/gverify.js"></script>
+<script>
+    var verifyCode = new GVerify("login_codebox");
+</script>
+</body>
+</html>

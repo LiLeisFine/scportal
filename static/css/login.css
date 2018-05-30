@@ -1,0 +1,90 @@
+.login_outbody, .login_inbody {
+    font-size: 16px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.login_inbody {
+    background: url('../img/loginbg.png') no-repeat;
+    background-position: center 0;
+    background-size: cover;
+    position: relative;
+}
+
+.login_mdline {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 15rem;
+    margin: auto;
+}
+
+.login_mdline > .login_mdl {
+    width: 100%;
+    background: #313e69;
+    opacity: 0.8;
+    height: 15rem;
+}
+
+.login_mdll {
+    font-size: 3rem;
+    color: #ffffff;
+    line-height: 15rem;
+}
+
+.login_lbox {
+    height: 21rem;
+    width: 20rem;
+    background: #ffffff;
+    margin-top: -3rem;
+    box-shadow: 0.1rem 0.1rem 0.3rem #0C0C0C;
+    border-radius: 0.3rem;
+}
+
+.login_lbox .layui-form-item {
+    border: 1px solid #D2D2D2;
+    border-radius: 0.15rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    overflow: visible;
+}
+
+.login_lbox .layui-form-label {
+    width: 2rem;
+    padding: 0.5rem 0.2rem;
+    height: 1.67rem;
+}
+
+.login_lbox .layui-form-label img {
+    width: 1.6rem;
+    height: 1.75rem;
+}
+
+.login_lbox .layui-input-block {
+    margin-left: 2.5rem;
+    margin-top: 0.2rem;
+}
+
+.login_lbox .layui-input-inline {
+    width: 7.20rem;
+    margin-right: 0;
+    margin-top: 0.2rem;
+}
+
+.login_lbox .layui-input {
+    border: none;
+}
+
+.login_codebox {
+    width: 7rem;
+    height: 2.5rem;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.login_btn {
+    background-color: #347ebc;
+}
