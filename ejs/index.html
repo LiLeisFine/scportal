@@ -41,62 +41,69 @@
             </div>
         </div>
     </div>
-    <div class="pub_body layui-container">
-        <div class="layui-row">
-            <div class="layui-col-sm2  layui-col-md2">
-                <ul class="layui-nav layui-nav-tree layui-nav-side pub_navside" lay-filter="test">
-                    <li class="layui-nav-item"><a href="javascript:;"><img src="../static/img/sl_mquery01.png" class="pub_navimg">商户查询<i class="layui-icon">&#xe602;</i> </a></li>
-                    <li class="layui-nav-item layui-this"><a href="javascript:;"><img src="../static/img/sl_tquery01.png" class="pub_navimg">交易查询<i class="layui-icon">&#xe602;</i> </a></li>
-                    <li class="layui-nav-item"><a href="javascript:;"><img src="../static/img/sl_bquery01.png" class="pub_navimg">代付查询<i class="layui-icon">&#xe602;</i> </a></li>
-                </ul>
-            </div>
-            <div class="layui-col-sm10  layui-col-md10 pub_content">
-                <div class="layui-form pub_querybox" >
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">搜索交易</label>
-                        <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                        </div>
-                        <label class="layui-form-label">订单号</label>
-                        <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                        </div>
-                        <label class="layui-form-label">交易状态</label>
-                        <div class="layui-input-inline">
-                            <select name="city" lay-verify="">
-                                <option value="">请选择一个城市</option>
-                                <option value="010">北京</option>
-                                <option value="021">上海</option>
-                                <option value="0571">杭州</option>
-                            </select>
-                        </div>
+    <div class="pub_body">
+        <div class="layui-side">
+            <ul class="layui-nav layui-nav-tree layui-nav-side pub_navside" lay-filter="test">
+                <li class="layui-nav-item"><a href="javascript:;"><img src="../static/img/sl_mquery01.png"
+                                                                       class="pub_navimg">商户查询<i class="layui-icon">&#xe602;</i>
+                </a></li>
+                <li class="layui-nav-item layui-this"><a href="javascript:;"><img src="../static/img/sl_tquery01.png"
+                                                                                  class="pub_navimg">交易查询<i
+                        class="layui-icon">&#xe602;</i> </a></li>
+                <li class="layui-nav-item"><a href="javascript:;"><img src="../static/img/sl_bquery01.png"
+                                                                       class="pub_navimg">代付查询<i class="layui-icon">&#xe602;</i>
+                </a></li>
+            </ul>
+        </div>
+        <div class="layui-body pub_content">
+            <div class="layui-form pub_querybox">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">搜索交易</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                               autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">开始时间</label>
-                        <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="date1">
-                        </div>
-                        <label class="layui-form-label">结束时间</label>
-                        <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="date2">
-                        </div>
+                    <label class="layui-form-label">订单号</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                               autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn pub_bluebtn"  lay-filter="formDemo">查询</button>
-                            <button type="reset" class="layui-btn pub_bluebtn">重置</button>
-                        </div>
+                    <label class="layui-form-label">交易状态</label>
+                    <div class="layui-input-inline">
+                        <select name="city" lay-verify="">
+                            <option value="">请选择一个城市</option>
+                            <option value="010">北京</option>
+                            <option value="021">上海</option>
+                            <option value="0571">杭州</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="date1">
+                    </div>
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="date2">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn pub_bluebtn" lay-filter="formDemo">查询</button>
+                        <button type="reset" class="layui-btn pub_bluebtn">重置</button>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 <script src="../static/layui/layui.all.js"></script>
 <script>
-    layui.use(['element','laydate'], function () {
+    layui.use(['element', 'laydate'], function () {
         var element = layui.element //导航的hover效果、二级菜单等功能，需要依赖element模块
-            ,laydate = layui.laydate;
+            , laydate = layui.laydate;
         //监听导航点击
         laydate.render({
             elem: '#date1'

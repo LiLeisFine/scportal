@@ -69,7 +69,8 @@ html, body, .layui-container {
     margin-right: 0.7rem;
 }
 .pub_content{
-    margin-left: 20rem ;
+    left:20rem ;
+    /*margin-left: 20rem ;*/
     background: #e7ebee;
     padding:2rem 1.5rem;
 }
