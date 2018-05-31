@@ -1,42 +1,87 @@
-html,body,.layui-container{
+html, body, .layui-container {
     font-size: 16px;
-    height:100%;
-    margin:0;
-    padding:0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
-.layui-nav-tree{
-    width:100%;
-}
-.layui-nav{
-    background: #313e69;
-    min-height:400px; height:auto!important; height:400px;
-}
-.layui-nav-tree .layui-nav-item{
+
+.layui-nav-tree .layui-nav-item {
     height: 5rem;
     border-top: 1px solid #2d3649;
 }
-.layui-nav-tree .layui-nav-item a{
+
+.layui-nav-tree .layui-nav-item a {
     font-size: 1.125rem;
     color: #8b939e;
     height: 5rem;
     line-height: 5rem;
 }
-.layui-nav-tree .layui-nav-item a:hover{
-    background: #313e69 url("../img/sl_mquery02.png") no-repeat;
-    color: white;
-}
-.pub_tl{
+
+.pub_tl {
     height: 5rem;
     background: #ffffff;
 }
-.pub_tltitle{
+
+.pub_tltitle {
     color: #313e69;
     font-size: 2rem;
     line-height: 4.5rem;
 }
-.pub_tlist{
+
+.pub_tlist {
     color: #313e69;
     font-size: 1rem;
     line-height: 4.5rem;
+}
+
+.pub_body{
+    position: relative;
+}
+
+.layui-nav-side.pub_navside{
+    background: #313e69;
+    top:5rem;
+    width: 20rem;
+}
+.layui-nav-side.pub_navside .layui-icon{
+    margin-left: 8rem;
+}
+.layui-nav-tree .layui-nav-item a:hover {
+    color: white;
+}
+.layui-nav-tree .layui-nav-bar{
+    background-color: #ffffff;
+}
+.layui-nav-tree .layui-this>a,.layui-nav-tree .layui-this>a:hover{
+    background-color: #313e69;
+    color: #ffffff;
+}
+.layui-nav-tree .layui-icon{
+    opacity: 0  ;
+}
+.layui-nav-tree .layui-this>a>.layui-icon{
+    opacity: 1;
+}
+.pub_navimg{
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.7rem;
+}
+.pub_content{
+    margin-left: 20rem ;
+    background: #e7ebee;
+    padding:2rem 1.5rem;
+}
+.pub_querybox{
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    padding-top:1.5rem;
+}
+.pub_bluebtn{
+    background-color: #347ebc;
+    padding: 0 2rem ;
+}
+.pub_querybox .layui-btn:first-child{
+    margin-left: 30rem;
 }

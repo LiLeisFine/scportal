@@ -20,23 +20,17 @@ app.use(session({
 var urlencodedParser = bodyParser.urlencoded({
     extended: false
 });
-var base_path = process.env.base_path || '/home/yumei/cashier/';
-var config_name = process.env.config_name || 'cashier_config.js';
+var base_path = process.env.base_path || '/home/yumei/scportal/';
+var config_name = process.env.config_name || 'scportal_config.js';
 var configdata = require(base_path + config_name);
-var sendTokenReq = require('./models/sendTokenReq.js').sendTokenReq;
+//var sendTokenReq = require('./models/sendTokenReq.js').sendTokenReq;
 var backendRequest = require('./models/backendRequest.js').backendRequest;
 var api = require('./models/api.js').getDatas;
-var decryptmod = require('./models/decryptmod.js');
+//var decryptmod = require('./models/decryptmod.js');
 var objKeySort = require("./models/objKeySort.js").objKeySort;
 var wrongmsg = '非法请求';
-app.get('/cashier/wechatoapay', function (req, res) {
-    var code = req.query.code;
-    console.log('------code:' + code);
-    sendTokenReq(configdata.app_id, configdata.app_secret, code, req, res, function (openid) {
-        console.log("------openid" + openid);
-        req.session.openid = openid;
-        res.render('wechat_oapay');
-    });
+app.get('/', function (req, res) {
+        res.render('login');
 });
 //老收银台微信公众号支付
 app.get('/cashier/gateway/wechatOpenIdRequest.htm', function (req, res) {
