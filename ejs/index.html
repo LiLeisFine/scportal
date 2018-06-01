@@ -91,9 +91,51 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn pub_bluebtn" lay-filter="formDemo">查询</button>
-                        <button type="reset" class="layui-btn pub_bluebtn">重置</button>
+                        <button type="reset" class="layui-btn pub_bluebtn">导出</button>
                     </div>
                 </div>
+            </div>
+            <div class="pub_table">
+                <table class="layui-table" lay-skin="line">
+                    <thead>
+                    <tr>
+                        <th>商户编号</th>
+                        <th>商户名称</th>
+                        <th>账户类型</th>
+                        <th>证件类型</th>
+                        <th>证件号</th>
+                        <th>开通时间</th>
+                        <th>总余额</th>
+                        <th>可用余额</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody class="pub_tbody">
+                    <tr>
+                        <td>贤心</td>
+                        <td>2016-11-29</td>
+                        <td>人生就像是一场修行</td>
+                        <td>人生就像是一场修行</td>
+                        <td>人生就像是一场修行</td>
+                        <td>人生就像是一场修行</td>
+                        <td>人生就像是一场修行</td>
+                        <td>人生就像是一场修行</td>
+                        <td>人生就像是一场修行</td>
+                    </tr>
+                    <tr>
+                        <td>许闲心</td>
+                        <td>2016-11-28</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="pub_page" class="pub_page"></div>
             </div>
         </div>
 
@@ -101,9 +143,10 @@
 </div>
 <script src="../static/layui/layui.all.js"></script>
 <script>
-    layui.use(['element', 'laydate'], function () {
+    layui.use(['element', 'laydate', 'laypage'], function () {
         var element = layui.element //导航的hover效果、二级菜单等功能，需要依赖element模块
-            , laydate = layui.laydate;
+            , laydate = layui.laydate
+            , laypage = layui.laypage;
         //监听导航点击
         laydate.render({
             elem: '#date1'
@@ -114,6 +157,14 @@
         element.on('nav(test)', function (elem) {
             //console.log(elem)
             layer.msg(elem.text());
+        });
+        laypage.render({
+            elem: 'pub_'
+            ,count: 100
+            ,layout: ['count', 'prev', 'page', 'next', 'skip']
+            ,jump: function(obj){
+                console.log(obj)
+            }
         });
     });
 </script>

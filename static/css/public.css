@@ -35,10 +35,6 @@ html, body, .layui-container {
     line-height: 4.5rem;
 }
 
-.pub_body{
-    position: relative;
-}
-
 .layui-nav-side.pub_navside{
     background: #313e69;
     top:5rem;
@@ -70,7 +66,7 @@ html, body, .layui-container {
 }
 .pub_content{
     left:20rem ;
-    /*margin-left: 20rem ;*/
+    top:5rem;
     background: #e7ebee;
     padding:2rem 1.5rem;
 }
@@ -85,4 +81,10 @@ html, body, .layui-container {
 }
 .pub_querybox .layui-btn:first-child{
     margin-left: 30rem;
+}
+.pub_table{
+    background: #ffffff;
+}
+.pub_table>.layui-table{
+    margin-top: 0;
 }
