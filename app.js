@@ -32,55 +32,71 @@ var wrongmsg = '非法请求';
 app.get('/', function (req, res) {
         res.render('login');
 });
-//老收银台微信公众号支付
-app.get('/cashier/gateway/wechatOpenIdRequest.htm', function (req, res) {
-    if (req.query.redirect_uri) {
-        var redirectUrl = getredirecturi(req.query, 13);
-        console.log('***********getquery======');
-        console.log(req.query);
-        console.log('***********redirect_uri======' + redirectUrl);
-        req.session.redirect_uri = redirectUrl;
-        console.log('***********req.session.redirect_uri======' + req.session.redirect_uri);
-        console.log('***********WECHAT_CODE======https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + configdata.app_id + '&redirect_uri=' + configdata.redirct_uri + '/cashier/gateway/wechatOpenIdRequest&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect');
-        res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + configdata.app_id + '&redirect_uri=' + configdata.redirct_uri + '/cashier/gateway/wechatOpenIdRequest&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect');
-    } else {
-        console.log("err_1");
-        res.redirect('/cashier/wrong');
+app.get('/index', function(request, response) {
+    if(request.session.token){
+        response.render('../ejs/index',{
+            user_name:request.session.user_name
+        });
+    }else{
+        response.redirect('/');
     }
 });
+app.get('/wrong_page', function (req, res) {
+    if(req.query.wrongmsg){
+        wrongmsg = req.query.wrongmsg;
+        res.render('wrong_page', {
+            wrongmsg: wrongmsg
+        });
+    }else{
+        res.render('wrong_page', {
+            wrongmsg: '页面不存在'
+        });
+    }
 
+});
 app.get('*', function (req, res) {
-    res.render('wrong_page', {
-        wrongmsg: '页面不存在'
+    res.redirect('/wrong_page');
+});
+app.post('/login', urlencodedParser, function (req, res) {
+    var loginDatas = req.body;
+    loginDatas.method = "yumei.user.login";
+    var data = api(loginDatas);//组成接口
+    backendRequest(data, req, res,function (data) {
+        console.log(data);
+        var result = data.yumei_user_login_response,
+            result_code = result.result_code;
+        if(result_code == '00'){
+            req.session.token = result.token_response.token;
+        }
+        res.json(result_code);
     });
 });
-app.post('/cashier/', urlencodedParser, function (req, res) {
-    try {
-        var sign = JSON.parse(req.body.data).sign || ' ',
-            str = '',
-            dataobj = JSON.parse(req.body.data);
-        delete dataobj.sign;
-        var datastr = p_tostr(str, dataobj),
-            pk = configdata.open_rsapubsecret,
-            verifyresult = decryptmod.versignrsa(datastr, sign, pk);
-        if (verifyresult) {
-            req.session.orderobj = JSON.parse(req.body.data);
-            res.render('cashier', {
-                orderUser: dataobj.seller_name,
-                orderMsg: dataobj.goods_clause.summary,
-                orderAmount: dataobj.fee_clause.total_fee.amount
-            });
-        } else {
-            console.log('verify err!');
-            wrongmsg = '验签失败';
-            res.redirect('/cashier/wrong');
+app.post('/userGet', urlencodedParser, function (req, res) {
+    var token = req.session.token || ' ';
+    var loginDatas = {
+        method:"yumei.user.get",
+        access_token:token
+    };
+    var data = api(loginDatas);//组成接口
+    backendRequest(data, req, res,function (data) {
+        var result = data.yumei_user_get_response,
+            result_code = result.result_code;
+        if(result_code == '00'){
+            var user_info = result["user_info"],
+                cert_status = user_info["cert_status"],
+                user_name = user_info["user_name"],
+                logon_id = user_info["logon_id"],
+                cert_no = user_info["cert_no"],
+                cert_type = user_info["cert_type"];
+
+            req.session.verStatus = cert_status ||'获取失败';
+            req.session.user_name = user_name||logon_id;
+            req.session.logon_id = logon_id||'获取失败';
+            req.session.cert_no = cert_no||'获取失败';
+            req.session.cert_type = cert_type||'获取失败';
         }
-    } catch (err) {
-        console.log(' /cashier parser err!');
-        res.redirect('/cashier/wrong');
-    }
-
-
+        res.json(data);
+    });
 });
 
 function p_tostr(str, obj) {

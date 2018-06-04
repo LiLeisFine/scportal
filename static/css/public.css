@@ -41,7 +41,8 @@ html, body, .layui-container {
     width: 18%;
 }
 .layui-nav-side.pub_navside .layui-icon{
-    margin-left: 40%;
+    position: absolute;
+    right:2rem;
 }
 .layui-nav-tree .layui-nav-item a:hover {
     color: white;
