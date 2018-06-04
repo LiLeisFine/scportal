@@ -38,10 +38,10 @@ html, body, .layui-container {
 .layui-nav-side.pub_navside{
     background: #313e69;
     top:5rem;
-    width: 20rem;
+    width: 18%;
 }
 .layui-nav-side.pub_navside .layui-icon{
-    margin-left: 8rem;
+    margin-left: 40%;
 }
 .layui-nav-tree .layui-nav-item a:hover {
     color: white;
@@ -65,7 +65,7 @@ html, body, .layui-container {
     margin-right: 0.7rem;
 }
 .pub_content{
-    left:20rem ;
+    left:18% ;
     top:5rem;
     background: #e7ebee;
     padding:2rem 1.5rem;
@@ -80,7 +80,7 @@ html, body, .layui-container {
     padding: 0 2rem ;
 }
 .pub_querybox .layui-btn:first-child{
-    margin-left: 30rem;
+    margin-left: 30%;
 }
 .pub_table{
     background: #ffffff;

@@ -60,12 +60,12 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">搜索交易</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                        <input type="text" name="password" required lay-verify="required"
                                autocomplete="off" class="layui-input">
                     </div>
                     <label class="layui-form-label">订单号</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                        <input type="text" name="password" required lay-verify="required"
                                autocomplete="off" class="layui-input">
                     </div>
                     <label class="layui-form-label">交易状态</label>
@@ -159,10 +159,10 @@
             layer.msg(elem.text());
         });
         laypage.render({
-            elem: 'pub_'
-            ,count: 100
-            ,layout: ['count', 'prev', 'page', 'next', 'skip']
-            ,jump: function(obj){
+            elem: 'pub_page'
+            , count: 100
+            , layout: ['count', 'prev', 'page', 'next', 'skip']
+            , jump: function (obj) {
                 console.log(obj)
             }
         });
