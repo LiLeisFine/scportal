@@ -17,7 +17,6 @@ html, body, .layui-container {
     height: 5rem;
     line-height: 5rem;
 }
-
 .pub_tl {
     height: 5rem;
     background: #ffffff;
@@ -33,6 +32,10 @@ html, body, .layui-container {
     color: #313e69;
     font-size: 1rem;
     line-height: 4.5rem;
+}
+
+.pub_tlbtn{
+    cursor: pointer;
 }
 
 .layui-nav-side.pub_navside{
@@ -88,4 +91,16 @@ html, body, .layui-container {
 }
 .pub_table>.layui-table{
     margin-top: 0;
+    text-align: center;
+}
+.pub_table>.layui-table>thead th{
+    text-align: center;
+}
+.layui-form-select dl dd.layui-this{
+    background-color: #347ebc;
+    color: #fff;
+}
+.layui-form-select dl dd:hover {
+    background-color: #f2f2f2;
+    color: #000;
 }

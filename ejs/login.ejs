@@ -50,7 +50,7 @@
                                 <div class="layui-form-item login_codebox" id="login_codebox" ></div>
                                 <div class="layui-form-item" style="border: none">
                                     <div class="layui-input-block" style="margin-left: 0">
-                                        <button class="layui-btn layui-btn-fluid login_btn" lay-submit lay-filter="login_btn">立即提交</button>
+                                        <button class="layui-btn layui-btn-fluid login_btn" lay-submit lay-filter="login_btn">登录</button>
                                     </div>
                                 </div>
                             </div>
@@ -63,51 +63,6 @@
 </div>
 <script type="text/javascript" src="../static/layui/layui.js"></script>
 <script type="text/javascript" src="../static/javascript/gverify.js"></script>
-<script>
-    var verifyCode = new GVerify("login_codebox");
-    layui.use('form', function(){
-        var form = layui.form
-            ,$ = layui.$;
-
-        //监听提交
-        form.on('submit(login_btn)', function(data){
-            if(verifyCode.validate(data.field.vercode)){
-                var field = data.field;
-                $.post("/login",
-                    {
-                        "logon_id": field.logon_id,
-                        "query_password": field.query_password
-                    },
-                    function (data) {
-                        if (data == '00') {
-                            layer.msg(JSON.stringify(data.field));
-                            $.post("/userget",
-                                {},
-                                function (data) {
-                                    var result_code = data.yumei_user_get_response.result_code;
-                                    if(result_code == "00"){
-                                        location.href = '/index';
-                                    }else{
-                                        location.href = '/systemmistake';
-                                    }
-
-                                });
-
-                        } else if (data == "999") {
-                            location.href = "/wrongmsg?wrongmsg=系统错误";
-                        } else {
-                            verifyCode.refresh();
-                            $('.login_vcode').val('');
-                            layer.msg('登录号或密码错误');
-                        }
-
-                    });
-            }else {
-                layer.msg('验证码错误');
-            }
-            return false;
-        });
-    });
-</script>
+<script type="text/javascript" src="../static/javascript/login.js"></script>
 </body>
 </html>

@@ -62,13 +62,25 @@ app.post('/login', urlencodedParser, function (req, res) {
     loginDatas.method = "yumei.user.login";
     var data = api(loginDatas);//组成接口
     backendRequest(data, req, res,function (data) {
-        console.log(data);
         var result = data.yumei_user_login_response,
             result_code = result.result_code;
         if(result_code == '00'){
             req.session.token = result.token_response.token;
         }
         res.json(result_code);
+    });
+});
+app.post('/logout', urlencodedParser,function (req, res) {
+    var loginDatas = req.body;
+    loginDatas.method = "yumei.user.logout";
+    loginDatas.access_token = req.session.token;
+    var data = api(loginDatas);//组成接口
+    backendRequest(data, req, res,function (data) {
+        if(req.session.token){
+            delete req.session.token;
+            delete req.session.infoobj;
+            res.json(data);
+        }
     });
 });
 app.post('/userGet', urlencodedParser, function (req, res) {
@@ -88,17 +100,84 @@ app.post('/userGet', urlencodedParser, function (req, res) {
                 logon_id = user_info["logon_id"],
                 cert_no = user_info["cert_no"],
                 cert_type = user_info["cert_type"];
+                infoobj =  req.session.infoobj = new Object();
 
-            req.session.verStatus = cert_status ||'获取失败';
-            req.session.user_name = user_name||logon_id;
-            req.session.logon_id = logon_id||'获取失败';
-            req.session.cert_no = cert_no||'获取失败';
-            req.session.cert_type = cert_type||'获取失败';
+            infoobj.verStatus = cert_status ||'获取失败';
+            infoobj.user_name = user_name||logon_id;
+            infoobj.logon_id = logon_id||'获取失败';
+            infoobj.cert_no = cert_no||'获取失败';
+            infoobj.cert_type = cert_type||'获取失败';
         }
         res.json(data);
     });
 });
 
+app.post('/mcquerypage', urlencodedParser, function (req, res) {
+    if(req.session.token){
+        res.render('merchartquery');
+    }else{
+        res.render('wrong_page',{
+            wrongmsg:'发生了错误'
+        });
+    }
+});
+app.post('/mcquery', urlencodedParser, function (req, res) {
+    var signDatas = req.body;
+    signDatas.access_token = req.session.token;
+    signDatas.page_size = "10";
+    signDatas.method = "yumei.partner.merchant.query.paging";
+    signDatas.type = "SC_SUB_MERCHANT";
+    signDatas.cert_type = "LICENSE";
+    var data = api(signDatas);//组成接口
+    backendRequest(data, req, res);
+});
+app.post('/mcactget', urlencodedParser, function (req, res) {
+    var signDatas = req.body
+        ,actindex = signDatas.actindex;
+    delete signDatas.actindex;
+    signDatas.access_token = req.session.token;
+    signDatas.method = "yumei.partner.user.account.get";
+    var data = api(signDatas);//组成接口
+    backendRequest(data, req, res,function (data) {
+        data.actindex = actindex;
+        res.json(data);
+    });
+});
+app.post('/trquerypage', urlencodedParser, function (req, res) {
+    if(req.session.token){
+        res.render('tradequery');
+    }else{
+        res.render('wrong_page',{
+            wrongmsg:'发生了错误'
+        });
+    }
+});
+app.post('/trquery', urlencodedParser, function (req, res) {
+    var signDatas = req.body;
+    signDatas.access_token = req.session.token;
+    signDatas.page_size = "10";
+    signDatas.product = "TRADE_SC";
+    signDatas.method = "yumei.partner.trade.record.query.paging";
+    var data = api(signDatas);//组成接口
+    backendRequest(data, req, res);
+});
+app.post('/bcquerypage', urlencodedParser, function (req, res) {
+    if(req.session.token){
+        res.render('batchpayquery');
+    }else{
+        res.render('wrong_page',{
+            wrongmsg:'发生了错误'
+        });
+    }
+});
+app.post('/bcquery', urlencodedParser, function (req, res) {
+    var signDatas = req.body;
+    signDatas.access_token = req.session.token;
+    signDatas.method = "yumei.partner.agentpay.record.query.paging";
+    signDatas.page_size = "10";
+    var data = api(signDatas);//组成接口
+    backendRequest(data, req, res);
+});
 function p_tostr(str, obj) {
     for (var key in obj) {
         if (typeof (obj[key]) != 'object') {

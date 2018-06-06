@@ -10,7 +10,7 @@ exports.backendRequest = function (data, request, response,cb,resname) {
             var datasss;
             try{
                  datasss = JSON.parse(str);
-
+                 console.log(datasss);
             }catch (err){
                 console.log(err);
                 console.log(str);
@@ -24,6 +24,8 @@ exports.backendRequest = function (data, request, response,cb,resname) {
             }
             if(typeof (cb) == 'function'){
                 cb(datasss);
+            }else{
+                response.json(datasss);
             }
         })
 
