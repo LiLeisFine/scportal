@@ -9,15 +9,19 @@ layui.use(['element', 'laydate', 'laypage', 'form'], function () {
     form.render('select');
     laydate.render({
         elem: '#gmt_create_start'
-        , type: 'datetime'
+        , type: 'date'
+        , theme: '#347ebc'
         , value: now.format("yyyy-MM-dd") + ' 00:00:00'
         , format: 'yyyy-MM-dd HH:mm:ss'
+        , showBottom:false
     });
     laydate.render({
         elem: '#gmt_create_end'
-        , type: 'datetime'
+        , type: 'date'
+        , theme: '#347ebc'
         , value: now.format("yyyy-MM-dd") + ' 23:59:59'
         , format: 'yyyy-MM-dd HH:mm:ss'
+        ,showBottom:false
     });
     laypage.render({
         elem: 'pub_page'
@@ -35,7 +39,6 @@ layui.use(['element', 'laydate', 'laypage', 'form'], function () {
         $.post("/bcquery",
             subobj,
             function (data) {
-                console.log(data);
                 var result = data.yumei_partner_agentpay_record_query_paging_response
                     , result_code = result.result_code
                     , result_code_msg = result.result_code_msg;
@@ -77,7 +80,7 @@ layui.use(['element', 'laydate', 'laypage', 'form'], function () {
                         $('.pub_tbody').append("<tr>" +
                             "<td>" + product + "</td>" +
                             "<td>" + out_trade_no + "</td>" +
-                            "<td>" + fadenum(4, 4, inst_card_no) + +"</td>" +
+                            "<td>" + fadenum(4, 4, inst_card_no) +"</td>" +
                             "<td>" + inst_card_holder_name + "</td>" +
                             "<td>" + amount + "</td>" +
                             "<td>" + fee + "</td>" +
@@ -94,7 +97,6 @@ layui.use(['element', 'laydate', 'laypage', 'form'], function () {
                         , layout: ['count', 'prev', 'page', 'next', 'skip']
                         , jump: function (obj, first) {
                             if (!first) {
-                                console.log(obj.curr);
                                 query(obj.curr, datas);
                             }
                         }

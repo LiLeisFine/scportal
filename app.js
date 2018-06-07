@@ -9,9 +9,10 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + "/ejs");
 //app.use('/cashier',express.static('./static'));
 app.use(express.static('./'));
-app.use('/cashier/images', express.static('./static/images'));
-app.use('/cashier/javascript', express.static('./static/javascript'));
-app.use('/cashier/stylesheet', express.static('./static/stylesheet'));
+app.use('/static/img', express.static('./static/img'));
+app.use('/static/javascript', express.static('./static/javascript'));
+app.use('/static/css', express.static('./static/css'));
+app.use('/static/layui', express.static('./static/layui'));
 app.use(session({
     secret: 'recommand 128 bytes random string', // 建议使用 128 个字符的随机字符串
     cookie: {maxAge: 1800 * 1000},

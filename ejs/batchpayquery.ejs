@@ -1,17 +1,16 @@
 <div class="layui-form pub_querybox">
     <div class="layui-form-item">
         <label class="layui-form-label">查询时间：</label>
-        <label class="layui-form-label">从</label>
         <div class="layui-input-inline">
             <input type="text" name="gmt_create_start" autocomplete="off" class="layui-input" id="gmt_create_start">
         </div>
-        <label class="layui-form-label">到</label>
+        <label class="layui-form-label">至：</label>
         <div class="layui-input-inline">
             <input type="text" name="gmt_create_end" autocomplete="off" class="layui-input" id="gmt_create_end">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label" style="width: 6rem">商户交易号：</label>
+        <label class="layui-form-label">商户交易号：</label>
         <div class="layui-input-inline">
             <input type="text" name="out_trade_no" autocomplete="off" class="layui-input">
         </div>
@@ -21,7 +20,7 @@
         </div>
         <label class="layui-form-label">状态：</label>
         <div class="layui-input-inline">
-            <select name="province">
+            <select name="status">
                 <option>全部</option>
                 <option value="WAIT_PAY">待付款</option>
                 <option value="PAY_SUCCESS">付款成功</option>
@@ -37,7 +36,7 @@
         <div class="layui-input-inline">
             <input type="text" name="card_no" autocomplete="off" class="layui-input">
         </div>
-        <label class="layui-form-label" style="width: 6rem">持卡人姓名：</label>
+        <label class="layui-form-label">持卡人姓名：</label>
         <div class="layui-input-inline">
             <input type="text" name="card_holder_name" autocomplete="off" class="layui-input">
         </div>

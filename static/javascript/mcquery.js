@@ -15,10 +15,10 @@ layui.use(['element', 'laypage','form'], function () {
     function query(num,datas) {
         var subobj = datas;
         subobj['current_page'] = num;
+        console.log(subobj);
         $.post("/mcquery",
             subobj,
             function (data) {
-                console.log(data);
                 var result = data.yumei_partner_merchant_query_paging_response
                     ,result_code = result.result_code
                     ,result_code_msg = result.result_code_msg;
@@ -110,8 +110,6 @@ layui.use(['element', 'laypage','form'], function () {
                                     var mcaaccount = result.account.available_amount.amount
                                         ,mcbaccount = result.account.balance_amount.amount
                                         ,actindex = data.actindex;
-                                    console.log(mcaaccount);
-                                    console.log(parseInt(actindex));
                                     $('.merchart_aact').eq(parseInt(actindex)).text(mcaaccount);
                                     $('.merchart_bact').eq(parseInt(actindex)).text(mcbaccount);
                                 }
