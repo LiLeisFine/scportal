@@ -64,30 +64,6 @@
 </div>
 <script src="../static/javascript/public.js"></script>
 <script src="../static/layui/layui.all.js"></script>
-<script>
-    layui.use('element',function () {
-        var element = layui.element
-            ,$ = layui.$;
-        element.on('nav(pub_navside)', function (elem) {
-            var pagename = elem.attr('id');
-            $.post('/'+pagename+'page',{},
-            function (data) {
-                $('.pub_content').html(data);
-            })
-        });
-        $('#trquery').click();
-        $('.pub_logoutbtn').click(function () {
-            layer.open({type:3});
-            $.post("/logout",
-                {},
-                function(data){
-                    if(data) {
-                        location.href = '/';
-                    }
-                }
-            )
-        })
-    });
-</script>
+<script src="../static/javascript/index.js"></script>
 </body>
 </html>

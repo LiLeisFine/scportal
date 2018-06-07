@@ -35,7 +35,7 @@ app.get('/', function (req, res) {
 app.get('/index', function(request, response) {
     if(request.session.token){
         response.render('../ejs/index',{
-            user_name:request.session.user_name
+            user_name:request.session.infoobj.user_name
         });
     }else{
         response.redirect('/');
